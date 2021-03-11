@@ -6,7 +6,8 @@ public class Clippy : MonoBehaviour
 {
     public Text bubbleText;
     public Animator clippyAnim;
-    public int clippyDelay;
+    public int clippyDelayMin;
+    public int clippyDelayMax;
 
     public string startMsg;
     public string[] messages;
@@ -30,7 +31,7 @@ public class Clippy : MonoBehaviour
             if(clippyClicked)
             {
                 clippyAnim.SetBool(clippyToggleName, false); //Hide Clippy
-                yield return new WaitForSecondsRealtime(clippyDelay); //Wait
+                yield return new WaitForSecondsRealtime(Random.Range(clippyDelayMin, clippyDelayMax)); //Wait
                 clippyAnim.SetBool(clippyToggleName, true); //Show Clippy
 
                 bubbleText.text = messages[Random.Range(0, messages.Length)]; //Choose random message.
