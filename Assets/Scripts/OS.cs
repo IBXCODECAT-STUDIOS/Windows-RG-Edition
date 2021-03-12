@@ -6,15 +6,23 @@ using UnityEngine.Video;
 public class OS : MonoBehaviour
 {
     public VideoPlayer videoPlayer;
+    public GameObject startMenu;
 
-    private bool active;
+    private bool videoActive;
+    private bool startActive;
 
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            active = !active;
-            MediaPlayer(active);
+            videoActive = !videoActive;
+            MediaPlayer(videoActive);
+        }
+
+        if(Input.GetKeyDown(KeyCode.LeftWindows) || Input.GetKeyDown(KeyCode.RightWindows) || Input.GetKeyDown(KeyCode.Escape))
+        {
+            startActive = !startActive;
+            startMenu.SetActive(startActive);
         }
     }
 
